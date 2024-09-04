@@ -8,7 +8,7 @@ def pytest_namespace():
     return {'plan_id': 0 ,"dar_id": None}
 api_host="https://playground.gpapdev.cnag.eu/analysis_service/"
 
-username=os.environ['username']
+username='test'#os.environ['username']
 password= os.environ['password']
 
 
