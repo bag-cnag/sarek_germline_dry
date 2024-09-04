@@ -45,8 +45,11 @@ def test_create_dar():
 
 def test_run_task():
     resp=requests.post(f"{api_host}/dars/run/{pytest.dar_id}",json={"resource_id":1}, headers=headers)
-    
-    pytest.task_id=resp.json()['data'][0][2]
+    status_array=resp.json()['data'][0]
+    if len(status_array[1])==7:
+        pytest.task_id=status_array[1]
+    else :
+        pytest.task_id=status_array[2]
     print(pytest.task_id)
     assert resp.status_code == 200
 
@@ -56,6 +59,7 @@ def test_run_execution():
         
         
         time.sleep(3)
+        
         resp= requests.get(f"{api_host}/tasks/{pytest.task_id}", headers=headers)
         status=resp.json()['data'][0]['status']
         if status=='completed':
