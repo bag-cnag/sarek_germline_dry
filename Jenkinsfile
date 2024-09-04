@@ -118,8 +118,8 @@ def BuildAndCopyMibsHere(branch, credentials,project_folder,content) {
                     
                     withPythonEnv('python3'){
                         withCredentials([string(credentialsId: 'playground_password', variable: 'password')]) {
-                            export username="test"
-                            pytest
+                            sh 'export username=test '
+                            sh 'pytest'
                         //sh 'docker run --net=host --name postgres_test_genomed -e POSTGRES_PASSWORD=mysecretpassword -d postgres'
                         //sh "rm -rf federate_central_server_config"
                         //getConfigFromGitea(env.BRANCH_NAME,"gitea_config","federate_central_server_config")
