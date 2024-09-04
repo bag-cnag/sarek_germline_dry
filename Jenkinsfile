@@ -118,7 +118,7 @@ def BuildAndCopyMibsHere(branch, credentials,project_folder,content) {
                     
                     withPythonEnv('python3'){
                         withCredentials([string(credentialsId: 'playground_password', variable: 'password')]) {
-                            sh 'export username=test '
+                            sh 'export username=test'
                             sh 'pytest'
                         //sh 'docker run --net=host --name postgres_test_genomed -e POSTGRES_PASSWORD=mysecretpassword -d postgres'
                         //sh "rm -rf federate_central_server_config"
